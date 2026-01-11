@@ -1,2 +1,4 @@
 # asm-collections
-ASM Clothing &amp; Jewelry is a fashion showcase website highlighting traditional Indian clothing, jewelry, and accessories. It allows users to browse diverse styles and collections inspired by India’s rich cultural heritage and craftsmanship.
+ASM Clothing & Jewelry is a fashion showcase website dedicated to celebrating the beauty of traditional Indian clothing, jewelry, and accessories. The platform allows users to explore a wide range of styles and collections inspired by India’s rich cultural heritage, regional diversity, and timeless craftsmanship. From elegant ethnic wear and intricate handcrafted jewelry to culturally inspired accessories, ASM highlights the artistry, fabrics, patterns, and techniques passed down through generations.
+
+The website serves as a visual and informational space where fashion enthusiasts can discover traditional designs, understand their cultural significance, and appreciate the fusion of heritage with modern fashion sensibilities. ASM Clothing & Jewelry aims to promote Indian craftsmanship while offering a refined browsing experience that reflects elegance, tradition, and authenticity.
