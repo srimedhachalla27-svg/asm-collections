@@ -6,21 +6,21 @@
 <title>Sarees – ASM Collections</title>
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fafafa; }
-  header { background:#f8f8f8; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; }
+  header { background:#f8f8f8; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
   .logo img { width:60px; vertical-align:middle; }
   nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
   nav a { text-decoration:none; color:#333; padding:5px 8px; }
-  nav a.active { font-weight:bold; }
+  nav a.active { font-weight:bold; color:#000; }
   main { padding:20px; text-align:center; }
   h1,h2 { margin-bottom:20px; }
   .products { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-  .product-card { width:300px; background:#fff; border:1px solid #ddd; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:10px; }
+  .product-card { width:300px; background:#fff; border:1px solid #ddd; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:10px; border-radius:5px; }
   .product-card h3 { margin:10px 0 5px; }
   .product-card p { margin:5px 0; }
 
   /* Slider */
-  .slider { position: relative; overflow: hidden; }
-  .slider img { width: 100%; display: none; border-radius: 5px; }
+  .slider { position: relative; overflow: hidden; margin-bottom:10px; border-radius:5px; }
+  .slider img { width: 100%; display: none; border-radius:5px; }
   .slider img.active { display: block; }
 
   .slider button {
@@ -67,10 +67,10 @@
     <div class="product-card">
       <h3>Banarasi Saree</h3>
       <div class="slider" data-index="0">
-        <img src="images/a40942c7-ee83-4a4e-b70c-427fa2536577.jpeg" class="active" alt="Banarasi 1">
-        <img src="images/a8f66f4f-7502-421b-8b66-fc1cb5d3e971.jpeg" alt="Banarasi 2">
-        <img src="images/94cf19e7-06be-4f2b-a3ba-94400657818c.jpeg" alt="Banarasi 3">
-        <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" alt="Banarasi 4">
+        <img src="images/a40942c7-ee83-4a4e-b70c-427fa2536577.jpeg" class="active" alt="Banarasi Saree 1">
+        <img src="images/a8f66f4f-7502-421b-8b66-fc1cb5d3e971.jpeg" alt="Banarasi Saree 2">
+        <img src="images/94cf19e7-06be-4f2b-a3ba-94400657818c.jpeg" alt="Banarasi Saree 3">
+        <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" alt="Banarasi Saree 4">
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
       </div>
@@ -86,6 +86,8 @@
         <img src="images/12d217e8-338a-4fd5-b393-b9e9f4cde572.jpeg" alt="Venkatagiri 2">
         <img src="images/53a9f902-e1d8-4ff7-b76f-78f7eb81185c.jpeg" alt="Venkatagiri 3">
         <img src="images/994f0229-142a-48fc-bb37-6cc331d7d8a6.jpeg" alt="Venkatagiri 4">
+        <img src="images/5577764a-a73d-41b5-bf06-d819e175e93e.jpeg" alt="Venkatagiri 5">
+        <img src="images/83eeaeee-30fe-4d4a-91d5-c62b16cdee42.jpeg" alt="Venkatagiri 6">
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
       </div>
@@ -97,10 +99,11 @@
     <div class="product-card">
       <h3>Ikkat Sarees</h3>
       <div class="slider" data-index="0">
-        <img src="images/4207c7af-eb51-41e6-b117-2da7c64cdfef.jpeg" class="active" alt="Ikkat 1">
-        <img src="images/049cb082-481d-406a-a1a3-1e650015b79b.jpeg" alt="Ikkat 2">
-        <img src="images/b04bf2aa-1675-47b7-b115-d8a782bd5d87.jpeg" alt="Ikkat 3">
-        <img src="images/cfdea079-1997-4922-b537-cec9b3fa7e71.jpeg" alt="Ikkat 4">
+        <img src="images/4207c7af-eb51-41e6-b117-2da7c64cdfef.jpeg" class="active" alt="Ikkat Saree 1">
+        <img src="images/049cb082-481d-406a-a1a3-1e650015b79b.jpeg" alt="Ikkat Saree 2">
+        <img src="images/b04bf2aa-1675-47b7-b115-d8a782bd5d87.jpeg" alt="Ikkat Saree 3">
+        <img src="images/cfdea079-1997-4922-b537-cec9b3fa7e71.jpeg" alt="Ikkat Saree 4">
+        <img src="images/D15ad8f3-fc46-4297-8a0c-9930f7c95d60.jpeg" alt="Ikkat Saree 5">
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
       </div>
