@@ -1,287 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Sarees – ASM Collections</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <style>
-    /* --- Product Slider CSS --- */
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sarees – ASM Collections</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fafafa; }
+  header { background:#f8f8f8; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo img { width:60px; vertical-align:middle; }
+  nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
+  nav ul li { position:relative; }
+  nav a { text-decoration:none; color:#333; padding:5px 8px; }
+  nav a.active { font-weight:bold; }
+  main { padding:20px; text-align:center; }
+  h1,h2 { margin-bottom:20px; }
+  .products { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+  .product-card { width:300px; background:#fff; border:1px solid #ddd; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:10px; }
+  .product-card h3 { margin:10px 0 5px; }
+  .product-card p { margin:5px 0; }
+  
+  /* --- Slider CSS --- */
+  .slider { position:relative; overflow:hidden; margin-bottom:10px; }
+  .slides img { width:100%; display:none; }
+  .slider input[type="radio"] { display:none; }
 
-    .product-card {
-      border: 1px solid #ddd;
-      padding: 10px;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      background: #fff;
-    }
+  /* Banarasi Saree Slider */
+  #b1-img1:checked ~ .slides img:nth-child(1),
+  #b1-img2:checked ~ .slides img:nth-child(2),
+  #b1-img3:checked ~ .slides img:nth-child(3),
+  #b1-img4:checked ~ .slides img:nth-child(4) { display:block; }
 
-    .product-card h3 {
-      margin: 10px 0 5px;
-    }
+  /* Venkatagiri Slider */
+  #v1-img1:checked ~ .slides img:nth-child(1),
+  #v1-img2:checked ~ .slides img:nth-child(2),
+  #v1-img3:checked ~ .slides img:nth-child(3),
+  #v1-img4:checked ~ .slides img:nth-child(4) { display:block; }
 
-    .slider {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
+  /* Ikkat Slider */
+  #i1-img1:checked ~ .slides img:nth-child(1),
+  #i1-img2:checked ~ .slides img:nth-child(2),
+  #i1-img3:checked ~ .slides img:nth-child(3),
+  #i1-img4:checked ~ .slides img:nth-child(4) { display:block; }
 
-    .slides img {
-      width: 100%;
-      display: none;
-    }
+  .navigation { text-align:center; margin-top:5px; }
+  .nav-btn { display:inline-block; width:12px; height:12px; background:#ccc; border-radius:50%; margin:0 3px; cursor:pointer; }
+  input[type="radio"]:checked + .slides + .navigation label { background:#333; }
 
-    .slider input[type="radio"] {
-      display: none;
-    }
-
-    /* Product 1 slider */
-    #p1-img1:checked ~ .slides img:nth-child(1),
-    #p1-img2:checked ~ .slides img:nth-child(2),
-    #p1-img3:checked ~ .slides img:nth-child(3),
-    #p1-img4:checked ~ .slides img:nth-child(4) {
-      display: block;
-    }
-
-    /* Product 2 slider */
-    #p2-img1:checked ~ .slides img:nth-child(1),
-    #p2-img2:checked ~ .slides img:nth-child(2),
-    #p2-img3:checked ~ .slides img:nth-child(3),
-    #p2-img4:checked ~ .slides img:nth-child(4) {
-      display: block;
-    }
-
-    /* Product 3 slider */
-    #p3-img1:checked ~ .slides img:nth-child(1),
-    #p3-img2:checked ~ .slides img:nth-child(2),
-    #p3-img3:checked ~ .slides img:nth-child(3),
-    #p3-img4:checked ~ .slides img:nth-child(4) {
-      display: block;
-    }
-
-    .navigation {
-      text-align: center;
-      margin-top: 5px;
-    }
-
-    .nav-btn {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      background: #ccc;
-      border-radius: 50%;
-      margin: 0 3px;
-      cursor: pointer;
-    }
-
-    /* Active dot highlighting */
-    #p1-img1:checked ~ .navigation label[for="p1-img1"],
-    #p1-img2:checked ~ .navigation label[for="p1-img2"],
-    #p1-img3:checked ~ .navigation label[for="p1-img3"],
-    #p1-img4:checked ~ .navigation label[for="p1-img4"],
-    #p2-img1:checked ~ .navigation label[for="p2-img1"],
-    #p2-img2:checked ~ .navigation label[for="p2-img2"],
-    #p2-img3:checked ~ .navigation label[for="p2-img3"],
-    #p2-img4:checked ~ .navigation label[for="p2-img4"],
-    #p3-img1:checked ~ .navigation label[for="p3-img1"],
-    #p3-img2:checked ~ .navigation label[for="p3-img2"],
-    #p3-img3:checked ~ .navigation label[for="p3-img3"],
-    #p3-img4:checked ~ .navigation label[for="p3-img4"] {
-      background: #333;
-    }
-
-    header nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      background: #f8f8f8;
-    }
-
-    .logo img {
-      width: 60px;
-      vertical-align: middle;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links li {
-      position: relative;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #333;
-      padding: 5px 8px;
-    }
-
-    .nav-links a.active {
-      font-weight: bold;
-      color: #000;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: #fff;
-      top: 100%;
-      left: 0;
-      min-width: 150px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-content li a {
-      display: block;
-      padding: 5px 10px;
-    }
-
-    main {
-      padding: 20px;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #f8f8f8;
-      margin-top: 30px;
-    }
-  </style>
+  footer { text-align:center; padding:15px; background:#f8f8f8; margin-top:30px; }
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">
-        <!-- Using your actual logo -->
-        <a href="index.html">
-          <img src="images/IMG_6748.JPG" alt="ASM Collections Logo"/>
-          <span>ASM Collections</span>
-        </a>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/IMG_6748.JPG" alt="ASM Logo"/>
+      <span>ASM Collections</span>
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sarees.html" class="active">Sarees</a></li>
+      <li><a href="lehengas.html">Lehengas</a></li>
+      <li><a href="jewelry.html">Jewelry</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Sarees Collection</h1>
+  <section class="products">
+
+    <!-- Banarasi Saree -->
+    <div class="product-card">
+      <h3>Banarasi Saree</h3>
+      <div class="slider">
+        <input type="radio" name="banarasi" id="b1-img1" checked>
+        <input type="radio" name="banarasi" id="b1-img2">
+        <input type="radio" name="banarasi" id="b1-img3">
+        <input type="radio" name="banarasi" id="b1-img4">
+        <div class="slides">
+          <img src="images/a40942c7-ee83-4a4e-b70c-427fa2536577.jpeg" alt="Banarasi 1">
+          <img src="images/a8f66f4f-7502-421b-8b66-fc1cb5d3e971.jpeg" alt="Banarasi 2">
+          <img src="images/94cf19e7-06be-4f2b-a3ba-94400657818c.jpeg" alt="Banarasi 3">
+          <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" alt="Banarasi 4">
+        </div>
+        <div class="navigation">
+          <label for="b1-img1" class="nav-btn"></label>
+          <label for="b1-img2" class="nav-btn"></label>
+          <label for="b1-img3" class="nav-btn"></label>
+          <label for="b1-img4" class="nav-btn"></label>
+        </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sarees.html" class="active">Sarees</a></li>
-        <li><a href="lehengas.html">Lehengas</a></li>
-        <li class="dropdown">
-          <a href="jewelry.html">Jewelry</a>
-          <ul class="dropdown-content">
-            <li><a href="bangles.html">Bangles</a></li>
-          </ul>
-        </li>
-        <li><a href="dresses.html">Dresses</a></li>
-        <li><a href="kurtas.html">Kurtas</a></li>
-        <li><a href="family-combos.html">Family Combos</a></li>
-        <li><a href="return-gifts.html">Return Gifts</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+      <p>Price: ₹12,000</p>
+      <p>Banarasi saree with rich silk texture, elegant zari work, perfect for weddings and festive occasions.</p>
+    </div>
 
-  <main>
-    <h1>Sarees Collection</h1>
-    <section>
-      <h2>Pattu / Silk Sarees</h2>
-      <div class="products">
-
-        <!-- Banarasi Tissue Silk Saree -->
-        <div class="product-card">
-          <h3>Banarasi Tissue Silk Saree</h3>
-          <div class="slider">
-            <input type="radio" name="p1" id="p1-img1" checked>
-            <input type="radio" name="p1" id="p1-img2">
-            <input type="radio" name="p1" id="p1-img3">
-            <input type="radio" name="p1" id="p1-img4">
-            <div class="slides">
-              <img src="https://cdn.glitch.global/.../IMG_8022.jpeg" alt="Banarasi tissue silk saree view 1">
-              <img src="https://cdn.glitch.global/.../IMG_8022_2.jpeg" alt="Banarasi tissue silk saree view 2">
-              <img src="https://cdn.glitch.global/.../IMG_8022_3.jpeg" alt="Banarasi tissue silk saree view 3">
-              <img src="https://cdn.glitch.global/.../IMG_8022_4.jpeg" alt="Banarasi tissue silk saree view 4">
-            </div>
-            <div class="navigation">
-              <label for="p1-img1" class="nav-btn"></label>
-              <label for="p1-img2" class="nav-btn"></label>
-              <label for="p1-img3" class="nav-btn"></label>
-              <label for="p1-img4" class="nav-btn"></label>
-            </div>
-          </div>
-          <p>Price: ₹12,000</p>
-          <p>Banarasi tissue silk saree with Kanchi border and delicate hand‑brush patterns, perfect for festive occasions.</p>
+    <!-- Venkatagiri Pattu Saree -->
+    <div class="product-card">
+      <h3>Venkatagiri Pattu Saree</h3>
+      <div class="slider">
+        <input type="radio" name="venkatagiri" id="v1-img1" checked>
+        <input type="radio" name="venkatagiri" id="v1-img2">
+        <input type="radio" name="venkatagiri" id="v1-img3">
+        <input type="radio" name="venkatagiri" id="v1-img4">
+        <div class="slides">
+          <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" alt="Venkatagiri 1">
+          <img src="images/12d217e8-338a-4fd5-b393-b9e9f4cde572.jpeg" alt="Venkatagiri 2">
+          <img src="images/53a9f902-e1d8-4ff7-b76f-78f7eb81185c.jpeg" alt="Venkatagiri 3">
+          <img src="images/994f0229-142a-48fc-bb37-6cc331d7d8a6.jpeg" alt="Venkatagiri 4">
         </div>
-
-        <!-- Chandari Tissue Silk Saree -->
-        <div class="product-card">
-          <h3>Chandari Tissue Silk Saree</h3>
-          <div class="slider">
-            <input type="radio" name="p2" id="p2-img1" checked>
-            <input type="radio" name="p2" id="p2-img2">
-            <input type="radio" name="p2" id="p2-img3">
-            <input type="radio" name="p2" id="p2-img4">
-            <div class="slides">
-              <img src="https://cdn.glitch.global/.../IMG_8026.jpeg" alt="Chandari tissue silk saree view 1">
-              <img src="https://cdn.glitch.global/.../IMG_8026_2.jpeg" alt="Chandari tissue silk saree view 2">
-              <img src="https://cdn.glitch.global/.../IMG_8026_3.jpeg" alt="Chandari tissue silk saree view 3">
-              <img src="https://cdn.glitch.global/.../IMG_8026_4.jpeg" alt="Chandari tissue silk saree view 4">
-            </div>
-            <div class="navigation">
-              <label for="p2-img1" class="nav-btn"></label>
-              <label for="p2-img2" class="nav-btn"></label>
-              <label for="p2-img3" class="nav-btn"></label>
-              <label for="p2-img4" class="nav-btn"></label>
-            </div>
-          </div>
-          <p>Price: ₹11,000</p>
-          <p>Chandari tissue silk saree with zari border and contrasting blouse, elegant for weddings and parties.</p>
+        <div class="navigation">
+          <label for="v1-img1" class="nav-btn"></label>
+          <label for="v1-img2" class="nav-btn"></label>
+          <label for="v1-img3" class="nav-btn"></label>
+          <label for="v1-img4" class="nav-btn"></label>
         </div>
-
-        <!-- Semi-Silk Saree -->
-        <div class="product-card">
-          <h3>Semi-Silk Saree</h3>
-          <div class="slider">
-            <input type="radio" name="p3" id="p3-img1" checked>
-            <input type="radio" name="p3" id="p3-img2">
-            <input type="radio" name="p3" id="p3-img3">
-            <input type="radio" name="p3" id="p3-img4">
-            <div class="slides">
-              <img src="https://cdn.glitch.global/.../IMG_8016.jpeg" alt="Semi-silk saree view 1">
-              <img src="https://cdn.glitch.global/.../IMG_8016_2.jpeg" alt="Semi-silk saree view 2">
-              <img src="https://cdn.glitch.global/.../IMG_8016_3.jpeg" alt="Semi-silk saree view 3">
-              <img src="https://cdn.glitch.global/.../IMG_8016_4.jpeg" alt="Semi-silk saree view 4">
-            </div>
-            <div class="navigation">
-              <label for="p3-img1" class="nav-btn"></label>
-              <label for="p3-img2" class="nav-btn"></label>
-              <label for="p3-img3" class="nav-btn"></label>
-              <label for="p3-img4" class="nav-btn"></label>
-            </div>
-          </div>
-          <p>Price: ₹9,500</p>
-          <p>Lovely semi-silk saree with modern patterns, lightweight feel, and easy drape for casual and festive wear.</p>
-        </div>
-
       </div>
-    </section>
-  </main>
+      <p>Price: ₹11,000</p>
+      <p>Venkatagiri Pattu saree with fine weaving, soft silk, and traditional patterns, ideal for festive wear.</p>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 ASM Collections. All rights reserved.</p>
-  </footer>
+    <!-- Ikkat Sarees -->
+    <div class="product-card">
+      <h3>Ikkat Sarees</h3>
+      <div class="slider">
+        <input type="radio" name="ikkat" id="i1-img1" checked>
+        <input type="radio" name="ikkat" id="i1-img2">
+        <input type="radio" name="ikkat" id="i1-img3">
+        <input type="radio" name="ikkat" id="i1-img4">
+        <div class="slides">
+          <img src="images/4207c7af-eb51-41e6-b117-2da7c64cdfef.jpeg" alt="Ikkat 1">
+          <img src="images/049cb082-481d-406a-a1a3-1e650015b79b.jpeg" alt="Ikkat 2">
+          <img src="images/b04bf2aa-1675-47b7-b115-d8a782bd5d87.jpeg" alt="Ikkat 3">
+          <img src="images/cfdea079-1997-4922-b537-cec9b3fa7e71.jpeg" alt="Ikkat 4">
+        </div>
+        <div class="navigation">
+          <label for="i1-img1" class="nav-btn"></label>
+          <label for="i1-img2" class="nav-btn"></label>
+          <label for="i1-img3" class="nav-btn"></label>
+          <label for="i1-img4" class="nav-btn"></label>
+        </div>
+      </div>
+      <p>Price: ₹9,500</p>
+      <p>Ikkat sarees with bold geometric patterns, vibrant colors, and traditional handwoven craftsmanship.</p>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 ASM Collections. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
