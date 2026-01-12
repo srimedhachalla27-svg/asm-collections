@@ -6,11 +6,12 @@
   <title>Sarees – ASM Collections</title>
   <link rel="stylesheet" href="styles.css"/>
   <style>
-    /* --- Slider CSS --- */
+    /* --- Product Slider CSS --- */
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
+      justify-content: center;
     }
 
     .product-card {
@@ -18,6 +19,12 @@
       padding: 10px;
       width: 300px;
       text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: #fff;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px;
     }
 
     .slider {
@@ -32,20 +39,34 @@
       display: none;
     }
 
-    /* Show selected slide */
-    input[type="radio"]:checked + .slides img:nth-child(1),
-    input[type="radio"]:checked + .slides img:nth-child(2),
-    input[type="radio"]:checked + .slides img:nth-child(3),
-    input[type="radio"]:checked + .slides img:nth-child(4) {
-      display: block;
-    }
-
-    /* Hide radio buttons */
     .slider input[type="radio"] {
       display: none;
     }
 
-    /* Navigation dots */
+    /* Product 1 slider */
+    #p1-img1:checked ~ .slides img:nth-child(1),
+    #p1-img2:checked ~ .slides img:nth-child(2),
+    #p1-img3:checked ~ .slides img:nth-child(3),
+    #p1-img4:checked ~ .slides img:nth-child(4) {
+      display: block;
+    }
+
+    /* Product 2 slider */
+    #p2-img1:checked ~ .slides img:nth-child(1),
+    #p2-img2:checked ~ .slides img:nth-child(2),
+    #p2-img3:checked ~ .slides img:nth-child(3),
+    #p2-img4:checked ~ .slides img:nth-child(4) {
+      display: block;
+    }
+
+    /* Product 3 slider */
+    #p3-img1:checked ~ .slides img:nth-child(1),
+    #p3-img2:checked ~ .slides img:nth-child(2),
+    #p3-img3:checked ~ .slides img:nth-child(3),
+    #p3-img4:checked ~ .slides img:nth-child(4) {
+      display: block;
+    }
+
     .navigation {
       text-align: center;
       margin-top: 5px;
@@ -61,7 +82,7 @@
       cursor: pointer;
     }
 
-    /* Highlight active dot */
+    /* Active dot highlighting */
     #p1-img1:checked ~ .navigation label[for="p1-img1"],
     #p1-img2:checked ~ .navigation label[for="p1-img2"],
     #p1-img3:checked ~ .navigation label[for="p1-img3"],
@@ -76,14 +97,82 @@
     #p3-img4:checked ~ .navigation label[for="p3-img4"] {
       background: #333;
     }
+
+    header nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: #f8f8f8;
+    }
+
+    .logo img {
+      width: 60px;
+      vertical-align: middle;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px 8px;
+    }
+
+    .nav-links a.active {
+      font-weight: bold;
+      color: #000;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content li a {
+      display: block;
+      padding: 5px 10px;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #f8f8f8;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
   <header>
     <nav>
       <div class="logo">
+        <!-- Using your actual logo -->
         <a href="index.html">
-          <img src="images/asm-logo.png" alt="ASM Logo"/>
+          <img src="images/IMG_6748.JPG" alt="ASM Collections Logo"/>
           <span>ASM Collections</span>
         </a>
       </div>
@@ -112,23 +201,20 @@
       <h2>Pattu / Silk Sarees</h2>
       <div class="products">
 
-        <!-- Product 1 -->
+        <!-- Banarasi Tissue Silk Saree -->
         <div class="product-card">
           <h3>Banarasi Tissue Silk Saree</h3>
           <div class="slider">
-            <!-- Radio buttons -->
             <input type="radio" name="p1" id="p1-img1" checked>
             <input type="radio" name="p1" id="p1-img2">
             <input type="radio" name="p1" id="p1-img3">
             <input type="radio" name="p1" id="p1-img4">
-
             <div class="slides">
-              <img src="images/banarasi1.jpg" alt="Banarasi tissue silk saree view 1">
-              <img src="images/banarasi2.jpg" alt="Banarasi tissue silk saree view 2">
-              <img src="images/banarasi3.jpg" alt="Banarasi tissue silk saree view 3">
-              <img src="images/banarasi4.jpg" alt="Banarasi tissue silk saree view 4">
+              <img src="https://cdn.glitch.global/.../IMG_8022.jpeg" alt="Banarasi tissue silk saree view 1">
+              <img src="https://cdn.glitch.global/.../IMG_8022_2.jpeg" alt="Banarasi tissue silk saree view 2">
+              <img src="https://cdn.glitch.global/.../IMG_8022_3.jpeg" alt="Banarasi tissue silk saree view 3">
+              <img src="https://cdn.glitch.global/.../IMG_8022_4.jpeg" alt="Banarasi tissue silk saree view 4">
             </div>
-
             <div class="navigation">
               <label for="p1-img1" class="nav-btn"></label>
               <label for="p1-img2" class="nav-btn"></label>
@@ -137,10 +223,10 @@
             </div>
           </div>
           <p>Price: ₹12,000</p>
-          <p>Elegant Banarasi tissue silk saree with Kanchi border and delicate hand-brush patterns.</p>
+          <p>Banarasi tissue silk saree with Kanchi border and delicate hand‑brush patterns, perfect for festive occasions.</p>
         </div>
 
-        <!-- Product 2 -->
+        <!-- Chandari Tissue Silk Saree -->
         <div class="product-card">
           <h3>Chandari Tissue Silk Saree</h3>
           <div class="slider">
@@ -148,14 +234,12 @@
             <input type="radio" name="p2" id="p2-img2">
             <input type="radio" name="p2" id="p2-img3">
             <input type="radio" name="p2" id="p2-img4">
-
             <div class="slides">
-              <img src="images/chandari1.jpg" alt="Chandari tissue silk saree view 1">
-              <img src="images/chandari2.jpg" alt="Chandari tissue silk saree view 2">
-              <img src="images/chandari3.jpg" alt="Chandari tissue silk saree view 3">
-              <img src="images/chandari4.jpg" alt="Chandari tissue silk saree view 4">
+              <img src="https://cdn.glitch.global/.../IMG_8026.jpeg" alt="Chandari tissue silk saree view 1">
+              <img src="https://cdn.glitch.global/.../IMG_8026_2.jpeg" alt="Chandari tissue silk saree view 2">
+              <img src="https://cdn.glitch.global/.../IMG_8026_3.jpeg" alt="Chandari tissue silk saree view 3">
+              <img src="https://cdn.glitch.global/.../IMG_8026_4.jpeg" alt="Chandari tissue silk saree view 4">
             </div>
-
             <div class="navigation">
               <label for="p2-img1" class="nav-btn"></label>
               <label for="p2-img2" class="nav-btn"></label>
@@ -164,10 +248,10 @@
             </div>
           </div>
           <p>Price: ₹11,000</p>
-          <p>Chandari tissue silk saree with zari border, contrasting blouse, and graceful drape.</p>
+          <p>Chandari tissue silk saree with zari border and contrasting blouse, elegant for weddings and parties.</p>
         </div>
 
-        <!-- Product 3 -->
+        <!-- Semi-Silk Saree -->
         <div class="product-card">
           <h3>Semi-Silk Saree</h3>
           <div class="slider">
@@ -175,14 +259,12 @@
             <input type="radio" name="p3" id="p3-img2">
             <input type="radio" name="p3" id="p3-img3">
             <input type="radio" name="p3" id="p3-img4">
-
             <div class="slides">
-              <img src="images/semi1.jpg" alt="Semi-silk saree view 1">
-              <img src="images/semi2.jpg" alt="Semi-silk saree view 2">
-              <img src="images/semi3.jpg" alt="Semi-silk saree view 3">
-              <img src="images/semi4.jpg" alt="Semi-silk saree view 4">
+              <img src="https://cdn.glitch.global/.../IMG_8016.jpeg" alt="Semi-silk saree view 1">
+              <img src="https://cdn.glitch.global/.../IMG_8016_2.jpeg" alt="Semi-silk saree view 2">
+              <img src="https://cdn.glitch.global/.../IMG_8016_3.jpeg" alt="Semi-silk saree view 3">
+              <img src="https://cdn.glitch.global/.../IMG_8016_4.jpeg" alt="Semi-silk saree view 4">
             </div>
-
             <div class="navigation">
               <label for="p3-img1" class="nav-btn"></label>
               <label for="p3-img2" class="nav-btn"></label>
@@ -191,7 +273,7 @@
             </div>
           </div>
           <p>Price: ₹9,500</p>
-          <p>Lovely semi-silk saree with modern patterns and a smooth, comfortable feel.</p>
+          <p>Lovely semi-silk saree with modern patterns, lightweight feel, and easy drape for casual and festive wear.</p>
         </div>
 
       </div>
