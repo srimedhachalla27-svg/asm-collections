@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sarees – ASM Collections</title>
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fafafa; }
   header { background:#f8f8f8; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; }
   .logo img { width:60px; vertical-align:middle; }
   nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
-  nav ul li { position:relative; }
   nav a { text-decoration:none; color:#333; padding:5px 8px; }
   nav a.active { font-weight:bold; }
   main { padding:20px; text-align:center; }
@@ -18,35 +17,26 @@
   .product-card { width:300px; background:#fff; border:1px solid #ddd; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:10px; }
   .product-card h3 { margin:10px 0 5px; }
   .product-card p { margin:5px 0; }
-  
-  /* --- Slider CSS --- */
-  .slider { position:relative; overflow:hidden; margin-bottom:10px; }
-  .slides img { width:100%; display:none; }
-  .slider input[type="radio"] { display:none; }
 
-  /* Banarasi Saree Slider */
-  #b1-img1:checked ~ .slides img:nth-child(1),
-  #b1-img2:checked ~ .slides img:nth-child(2),
-  #b1-img3:checked ~ .slides img:nth-child(3),
-  #b1-img4:checked ~ .slides img:nth-child(4) { display:block; }
+  /* Slider */
+  .slider { position: relative; overflow: hidden; }
+  .slider img { width: 100%; display: none; border-radius: 5px; }
+  .slider img.active { display: block; }
 
-  /* Venkatagiri Slider */
-  #v1-img1:checked ~ .slides img:nth-child(1),
-  #v1-img2:checked ~ .slides img:nth-child(2),
-  #v1-img3:checked ~ .slides img:nth-child(3),
-  #v1-img4:checked ~ .slides img:nth-child(4) { display:block; }
-
-  /* Ikkat Slider */
-  #i1-img1:checked ~ .slides img:nth-child(1),
-  #i1-img2:checked ~ .slides img:nth-child(2),
-  #i1-img3:checked ~ .slides img:nth-child(3),
-  #i1-img4:checked ~ .slides img:nth-child(4) { display:block; }
-
-  .navigation { text-align:center; margin-top:5px; }
-  .nav-btn { display:inline-block; width:12px; height:12px; background:#ccc; border-radius:50%; margin:0 3px; cursor:pointer; }
-  input[type="radio"]:checked + .slides + .navigation label { background:#333; }
-
-  footer { text-align:center; padding:15px; background:#f8f8f8; margin-top:30px; }
+  .slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 3px;
+  }
+  .slider button.prev { left: 5px; }
+  .slider button.next { right: 5px; }
 </style>
 </head>
 <body>
@@ -76,23 +66,13 @@
     <!-- Banarasi Saree -->
     <div class="product-card">
       <h3>Banarasi Saree</h3>
-      <div class="slider">
-        <input type="radio" name="banarasi" id="b1-img1" checked>
-        <input type="radio" name="banarasi" id="b1-img2">
-        <input type="radio" name="banarasi" id="b1-img3">
-        <input type="radio" name="banarasi" id="b1-img4">
-        <div class="slides">
-          <img src="images/a40942c7-ee83-4a4e-b70c-427fa2536577.jpeg" alt="Banarasi 1">
-          <img src="images/a8f66f4f-7502-421b-8b66-fc1cb5d3e971.jpeg" alt="Banarasi 2">
-          <img src="images/94cf19e7-06be-4f2b-a3ba-94400657818c.jpeg" alt="Banarasi 3">
-          <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" alt="Banarasi 4">
-        </div>
-        <div class="navigation">
-          <label for="b1-img1" class="nav-btn"></label>
-          <label for="b1-img2" class="nav-btn"></label>
-          <label for="b1-img3" class="nav-btn"></label>
-          <label for="b1-img4" class="nav-btn"></label>
-        </div>
+      <div class="slider" data-index="0">
+        <img src="images/a40942c7-ee83-4a4e-b70c-427fa2536577.jpeg" class="active" alt="Banarasi 1">
+        <img src="images/a8f66f4f-7502-421b-8b66-fc1cb5d3e971.jpeg" alt="Banarasi 2">
+        <img src="images/94cf19e7-06be-4f2b-a3ba-94400657818c.jpeg" alt="Banarasi 3">
+        <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" alt="Banarasi 4">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
       </div>
       <p>Price: ₹12,000</p>
       <p>Banarasi saree with rich silk texture, elegant zari work, perfect for weddings and festive occasions.</p>
@@ -101,23 +81,13 @@
     <!-- Venkatagiri Pattu Saree -->
     <div class="product-card">
       <h3>Venkatagiri Pattu Saree</h3>
-      <div class="slider">
-        <input type="radio" name="venkatagiri" id="v1-img1" checked>
-        <input type="radio" name="venkatagiri" id="v1-img2">
-        <input type="radio" name="venkatagiri" id="v1-img3">
-        <input type="radio" name="venkatagiri" id="v1-img4">
-        <div class="slides">
-          <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" alt="Venkatagiri 1">
-          <img src="images/12d217e8-338a-4fd5-b393-b9e9f4cde572.jpeg" alt="Venkatagiri 2">
-          <img src="images/53a9f902-e1d8-4ff7-b76f-78f7eb81185c.jpeg" alt="Venkatagiri 3">
-          <img src="images/994f0229-142a-48fc-bb37-6cc331d7d8a6.jpeg" alt="Venkatagiri 4">
-        </div>
-        <div class="navigation">
-          <label for="v1-img1" class="nav-btn"></label>
-          <label for="v1-img2" class="nav-btn"></label>
-          <label for="v1-img3" class="nav-btn"></label>
-          <label for="v1-img4" class="nav-btn"></label>
-        </div>
+      <div class="slider" data-index="0">
+        <img src="images/010ab25e-6c0e-4b52-8e75-b56515d407a6.jpeg" class="active" alt="Venkatagiri 1">
+        <img src="images/12d217e8-338a-4fd5-b393-b9e9f4cde572.jpeg" alt="Venkatagiri 2">
+        <img src="images/53a9f902-e1d8-4ff7-b76f-78f7eb81185c.jpeg" alt="Venkatagiri 3">
+        <img src="images/994f0229-142a-48fc-bb37-6cc331d7d8a6.jpeg" alt="Venkatagiri 4">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
       </div>
       <p>Price: ₹11,000</p>
       <p>Venkatagiri Pattu saree with fine weaving, soft silk, and traditional patterns, ideal for festive wear.</p>
@@ -126,23 +96,13 @@
     <!-- Ikkat Sarees -->
     <div class="product-card">
       <h3>Ikkat Sarees</h3>
-      <div class="slider">
-        <input type="radio" name="ikkat" id="i1-img1" checked>
-        <input type="radio" name="ikkat" id="i1-img2">
-        <input type="radio" name="ikkat" id="i1-img3">
-        <input type="radio" name="ikkat" id="i1-img4">
-        <div class="slides">
-          <img src="images/4207c7af-eb51-41e6-b117-2da7c64cdfef.jpeg" alt="Ikkat 1">
-          <img src="images/049cb082-481d-406a-a1a3-1e650015b79b.jpeg" alt="Ikkat 2">
-          <img src="images/b04bf2aa-1675-47b7-b115-d8a782bd5d87.jpeg" alt="Ikkat 3">
-          <img src="images/cfdea079-1997-4922-b537-cec9b3fa7e71.jpeg" alt="Ikkat 4">
-        </div>
-        <div class="navigation">
-          <label for="i1-img1" class="nav-btn"></label>
-          <label for="i1-img2" class="nav-btn"></label>
-          <label for="i1-img3" class="nav-btn"></label>
-          <label for="i1-img4" class="nav-btn"></label>
-        </div>
+      <div class="slider" data-index="0">
+        <img src="images/4207c7af-eb51-41e6-b117-2da7c64cdfef.jpeg" class="active" alt="Ikkat 1">
+        <img src="images/049cb082-481d-406a-a1a3-1e650015b79b.jpeg" alt="Ikkat 2">
+        <img src="images/b04bf2aa-1675-47b7-b115-d8a782bd5d87.jpeg" alt="Ikkat 3">
+        <img src="images/cfdea079-1997-4922-b537-cec9b3fa7e71.jpeg" alt="Ikkat 4">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
       </div>
       <p>Price: ₹9,500</p>
       <p>Ikkat sarees with bold geometric patterns, vibrant colors, and traditional handwoven craftsmanship.</p>
@@ -154,6 +114,30 @@
 <footer>
   <p>&copy; 2025 ASM Collections. All rights reserved.</p>
 </footer>
+
+<script>
+  document.querySelectorAll('.slider').forEach(slider => {
+    let index = 0;
+    const images = slider.querySelectorAll('img');
+    const prevBtn = slider.querySelector('.prev');
+    const nextBtn = slider.querySelector('.next');
+
+    function showImage(i) {
+      images.forEach(img => img.classList.remove('active'));
+      images[i].classList.add('active');
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    });
+  });
+</script>
 
 </body>
 </html>
